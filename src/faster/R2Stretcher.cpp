@@ -477,7 +477,7 @@ R2Stretcher::calculateSizes()
                 outputIncrement *= 2;
                 inputIncrement = int(outputIncrement / r);
             }
-            windowSize = std::max(windowSize, roundUp(outputIncrement * 6));
+            windowSize = (std::max)(windowSize, roundUp(outputIncrement * 6));
             if (r > 5) while (windowSize < 8192) windowSize *= 2;
         }
     }
@@ -517,8 +517,8 @@ R2Stretcher::calculateSizes()
     m_log.log(1, "fft size", m_fftSize);
     m_log.log(1, "input increment and mean output increment", m_increment, m_increment * getEffectiveRatio());
 
-    if (std::max(m_aWindowSize, m_sWindowSize) > m_maxProcessSize) {
-        m_maxProcessSize = std::max(m_aWindowSize, m_sWindowSize);
+    if ((std::max)(m_aWindowSize, m_sWindowSize) > m_maxProcessSize) {
+        m_maxProcessSize = (std::max)(m_aWindowSize, m_sWindowSize);
     }
 
     m_outbufSize =
@@ -623,7 +623,7 @@ R2Stretcher::configure()
         for (size_t c = 0; c < m_channels; ++c) {
             m_channelData.push_back
                 (new ChannelData(windowSizes,
-                                 std::max(m_aWindowSize, m_sWindowSize),
+                                 (std::max)(m_aWindowSize, m_sWindowSize),
                                  m_fftSize,
                                  m_outbufSize));
         }
@@ -766,7 +766,7 @@ R2Stretcher::reconfigure()
         m_swindow = m_windows[m_sWindowSize];
 
         for (size_t c = 0; c < m_channels; ++c) {
-            m_channelData[c]->setSizes(std::max(m_aWindowSize, m_sWindowSize),
+            m_channelData[c]->setSizes((std::max)(m_aWindowSize, m_sWindowSize),
                                        m_fftSize);
         }
 
@@ -994,7 +994,7 @@ R2Stretcher::study(const float *const *input, size_t samples, bool final)
 
             size_t ready = inbuf.getReadSpace();
             assert(final || ready >= m_aWindowSize);
-            inbuf.peek(cd.accumulator, std::min(ready, m_aWindowSize));
+            inbuf.peek(cd.accumulator, (std::min)(ready, m_aWindowSize));
 
             if (m_aWindowSize == m_fftSize) {
 
@@ -1017,7 +1017,7 @@ R2Stretcher::study(const float *const *input, size_t samples, bool final)
                 // Note that we can't do this in-place.  Pity
 
                 float *tmp = (float *)alloca
-                    (std::max(m_fftSize, m_aWindowSize) * sizeof(float));
+                    ((std::max)(m_fftSize, m_aWindowSize) * sizeof(float));
 
                 if (m_aWindowSize > m_fftSize) {
                     m_afilter->cut(cd.accumulator);

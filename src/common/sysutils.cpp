@@ -47,8 +47,8 @@
 #include <iostream>
 
 #ifdef HAVE_IPP
-#include <ippversion.h>
-#include <ipp.h>
+#include <C:\Program Files (x86)\Intel\oneAPI\ipp\2021.7.0\include\ippversion.h>
+#include <C:\Program Files (x86)\Intel\oneAPI\ipp\2021.7.0\include\ipp.h>
 #endif
 
 #ifdef HAVE_VDSP

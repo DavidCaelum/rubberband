@@ -280,7 +280,7 @@ R2Stretcher::processChunks(size_t c, bool &any, bool &last)
         if (!cd.draining) {
             size_t ready = cd.inbuf->getReadSpace();
             assert(ready >= m_aWindowSize || cd.inputSize >= 0);
-            cd.inbuf->peek(cd.fltbuf, std::min(ready, m_aWindowSize));
+            cd.inbuf->peek(cd.fltbuf, (std::min)(ready, m_aWindowSize));
             cd.inbuf->skip(m_increment);
         }
 
@@ -338,7 +338,7 @@ R2Stretcher::processOneChunk()
         if (!cd.draining) {
             size_t ready = cd.inbuf->getReadSpace();
             assert(ready >= m_aWindowSize || cd.inputSize >= 0);
-            cd.inbuf->peek(cd.fltbuf, std::min(ready, m_aWindowSize));
+            cd.inbuf->peek(cd.fltbuf, (std::min)(ready, m_aWindowSize));
             cd.inbuf->skip(m_increment);
             analyseChunk(c);
         }
@@ -771,7 +771,7 @@ R2Stretcher::modifyChunk(size_t channel,
             float rf0 = 600 + (600 * ((r-1)*(r-1)*(r-1)*2));
             float f1ratio = freq1 / freq0;
             float f2ratio = freq2 / freq0;
-            freq0 = std::max(freq0, rf0);
+            freq0 = (std::max)(freq0, rf0);
             freq1 = freq0 * f1ratio;
             freq2 = freq0 * f2ratio;
         }
@@ -996,7 +996,7 @@ R2Stretcher::synthesiseChunk(size_t channel,
 
     m_swindow->cut(fltbuf);
     v_add(accumulator, fltbuf, wsz);
-    cd.accumulatorFill = std::max(cd.accumulatorFill, size_t(wsz));
+    cd.accumulatorFill = (std::max)(cd.accumulatorFill, size_t(wsz));
 
     if (wsz > fsz) {
         // reuse fltbuf to calculate interpolating window shape for

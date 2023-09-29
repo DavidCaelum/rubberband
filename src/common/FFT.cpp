@@ -46,8 +46,8 @@
 #endif
 
 #ifdef HAVE_IPP
-#include <ippversion.h>
-#include <ipps.h>
+#include <C:\Program Files (x86)\Intel\oneAPI\ipp\2021.7.0\include\ippversion.h>
+#include <C:\Program Files (x86)\Intel\oneAPI\ipp\2021.7.0\include\ipps.h>
 #endif
 
 #ifdef HAVE_FFTW3

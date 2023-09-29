@@ -24,7 +24,7 @@
 #include "Allocators.h"
 
 #ifdef HAVE_IPP
-#include <ipps.h>
+#include <C:\Program Files (x86)\Intel\oneAPI\ipp\2021.7.0\include\ipps.h>
 #endif
 
 #include <iostream>

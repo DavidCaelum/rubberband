@@ -711,10 +711,10 @@ R3Stretcher::process(const float *const *input, size_t samples, bool final)
             }
 
             int resampleBufSize = int(m_channelData.at(0)->resampled.size());
-            int maxResampleOutput = std::min(ws, resampleBufSize);
+            int maxResampleOutput = (std::min)(ws, resampleBufSize);
             
             int maxResampleInput = int(floor(maxResampleOutput * m_pitchScale));
-            int resampleInput = std::min(remaining, maxResampleInput);
+            int resampleInput = (std::min)(remaining, maxResampleInput);
             if (resampleInput == 0) resampleInput = 1;
             
             int resampleOutput = m_resampler->resample
@@ -734,7 +734,7 @@ R3Stretcher::process(const float *const *input, size_t samples, bool final)
             }
 
         } else {
-            int toWrite = std::min(ws, remaining);
+            int toWrite = (std::min)(ws, remaining);
             for (int c = 0; c < m_parameters.channels; ++c) {
                 m_channelData[c]->inbuf->write (input[c] + inputIx, toWrite);
             }
@@ -769,7 +769,7 @@ R3Stretcher::retrieve(float *const *output, size_t samples) const
             if (c > 0) {
                 m_log.log(0, "R3Stretcher::retrieve: WARNING: channel imbalance detected");
             }
-            got = std::min(got, std::max(gotHere, 0));
+            got = (std::min)(got, (std::max)(gotHere, 0));
         }
     }
 
@@ -955,7 +955,7 @@ R3Stretcher::consume()
         
         if (m_startSkip > 0) {
             int rs = cd0->outbuf->getReadSpace();
-            int toSkip = std::min(m_startSkip, rs);
+            int toSkip = (std::min)(m_startSkip, rs);
             for (int c = 0; c < channels; ++c) {
                 m_channelData.at(c)->outbuf->skip(toSkip);
             }

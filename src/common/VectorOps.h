@@ -28,8 +28,8 @@
 #ifndef _MSC_VER
 #include <inttypes.h>
 #endif
-#include <ippversion.h>
-#include <ipps.h>
+#include <C:\Program Files (x86)\Intel\oneAPI\ipp\2021.7.0\include\ippversion.h>
+#include <C:\Program Files (x86)\Intel\oneAPI\ipp\2021.7.0\include\ipps.h>
 #if (IPP_VERSION_MAJOR <= 7)
 // Deprecated in v8, removed in v9
 #include <ippac.h>

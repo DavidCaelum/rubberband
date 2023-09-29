@@ -115,7 +115,7 @@ void
 R2Stretcher::ChannelData::setSizes(size_t windowSize,
                                    size_t fftSize)
 {
-    size_t maxSize = 2 * std::max(windowSize, fftSize);
+    size_t maxSize = 2 * (std::max)(windowSize, fftSize);
     size_t realSize = maxSize / 2 + 1;
     size_t oldMax = inbuf->getSize();
     size_t oldReal = oldMax / 2 + 1;

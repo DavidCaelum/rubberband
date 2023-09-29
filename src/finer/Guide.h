@@ -350,9 +350,9 @@ public:
             prevSegmentation.residualAbove <
             prevSegmentation.percussiveAbove + bigGap) {
             guidance.phaseReset.present = true;
-            guidance.phaseReset.f0 = std::min(segmentation.percussiveAbove,
+            guidance.phaseReset.f0 = (std::min)(segmentation.percussiveAbove,
                                               nextSegmentation.percussiveAbove);
-            guidance.phaseReset.f1 = std::max(segmentation.residualAbove,
+            guidance.phaseReset.f1 = (std::max)(segmentation.residualAbove,
                                               nextSegmentation.residualAbove);
             if (guidance.phaseReset.f0 < 200.0) {
                 guidance.phaseReset.f0 = 0.0;
@@ -390,7 +390,7 @@ public:
                 guidance.fftBands[2].f0 = nyquist;
             }
         
-            double mid = std::max(lower, 1600.0);
+            double mid = (std::max)(lower, 1600.0);
 
             guidance.phaseLockBands[0].p = 1;
             guidance.phaseLockBands[0].beta = betaFor(300.0, ratio);
@@ -431,7 +431,7 @@ public:
             double unlockedAbove = 12000.0 - (ratio - 2.0) * 400.0;
             if (unlockedAbove < channelLimit) unlockedAbove = channelLimit;
             if (guidance.highUnlocked.present) {
-                guidance.highUnlocked.f0 = std::min(guidance.highUnlocked.f0,
+                guidance.highUnlocked.f0 = (std::min)(guidance.highUnlocked.f0,
                                                     unlockedAbove);
             } else {
                 guidance.highUnlocked.f0 = unlockedAbove;
@@ -540,7 +540,7 @@ protected:
         }
 
         if (guidance.phaseReset.f0 < segmentation.residualAbove) {
-            guidance.phaseReset.f0 = std::min(guidance.phaseReset.f0,
+            guidance.phaseReset.f0 = (std::min)(guidance.phaseReset.f0,
                                               segmentation.percussiveAbove);
         }
 
